@@ -1,0 +1,648 @@
+// ********** setting ********** //
+@import 'public/assets/scss/mixin';
+
+// $xs: 20;
+$xs: 20;
+$xs-l: 24;
+$s: 26;
+$s-l: 32; // line-height: 42
+$m-s: 39;
+$m: 40; // line-height: 48
+$l: 52; // line-height: 62
+$xl: 65;
+$xxl: 78;
+
+// ********** pdp ********** //
+
+.ap {
+    $section: '.ap-section';
+    $header: '.ap-section__header';
+    $body: '.ap-section__body';
+    $footer: '.ap-section__footer';
+    $cont: '.ap-cont';
+    $c-header: '.ap-cont__header';
+    $c-body: '.ap-cont__body';
+    $c-footer: '.ap-cont__footer';
+    $text: '.ap-text';
+    $image: '.ap-image';
+    $video: '.ap-video';
+    $footnote: '.ap-footnote';
+    $layout: '.ap-layout';
+    &-pdp {
+        --container-article-width-l: 720;
+        --container-article-width-min: 280;
+        --cont-w: 720;
+        --primary-color: #ee4141;
+        --primary-color2: #eba0a0;
+        --secondary-color: #b51f1f;
+        --gray-color: #58595b;
+        container-name: article;
+        container-type: inline-size;
+        max-width: 720px;
+        min-width: calc(280 * 1px);
+        margin: 0 auto;
+        background-color: #fff;
+        font-family: Gellix, "Arita", sans-serif;
+        font-weight: 600;
+        color: #222;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        text-align: center;
+        * {
+            box-sizing: border-box;
+        }
+        p {
+            margin: 0;
+        }
+        sup {
+            position: relative;
+            top: -0.2em;
+            line-height: 0;
+        }
+        h1, h2, h3, h4, h5, h6, th, td {
+            font-weight: inherit;
+        }
+        ul, ol {
+            &#{$layout} {
+                @include clamp-cqi(padding-left, 1, 32, --cont-w);
+                @include clamp-cqi(padding-right, 1, 32, --cont-w);
+            }
+        }
+        ul li, ol li {
+            position: static;
+            color: #222 !important;
+        }
+        dl dt, dl dd {
+            font-weight: 600;
+            color: #222;
+        }
+    }
+    &-pc-only {
+        display: block;
+    }
+    &-mo-only {
+        display: none;
+    }
+    @media (max-width: 330px) { 
+        &-pc-only {
+            display: none;
+        }
+        &-mo-only {
+            display: block;
+        }
+    }
+    &-layout {
+        @include clamp-cqi(padding-left, 1, 32, --cont-w);
+        @include clamp-cqi(padding-right, 1, 32, --cont-w);
+        box-sizing: border-box;
+    }
+    &-pos {
+        &-r {
+            position: relative !important;
+        }
+        &-a {
+            position: absolute !important;
+            width: 100%;
+        }
+    }
+    &-align {
+        &-l {
+            text-align: left;
+        }
+        &-r {
+            text-align: right;
+        }
+    }
+    &-text {
+        font-weight: inherit;
+        color: inherit;
+        
+        &--xs {
+            @include clamp-cqi(font-size, 10, $xs, --cont-w);
+            &#{$text}--larger {
+                @include clamp-cqi(font-size, 11, $xs-l, --cont-w);
+            }
+        }
+        &--s {
+            @include clamp-cqi(font-size, 11, $s, --cont-w);
+            &#{$text}--larger {
+                @include clamp-cqi(font-size, 11, $s-l, --cont-w);
+                @include line-height($s-l, 42);
+            }
+        }
+        &--m {
+            @include clamp-cqi(font-size, 12, $m, --cont-w);
+            @include line-height($m, 48);
+            &#{$text}--smaller {
+                @include clamp-cqi(font-size, 12, $m-s, --cont-w);
+                @include line-height($m-s, 48);
+            }
+        }
+        &--l {
+            @include clamp-cqi(font-size, 14, $l, --cont-w);
+            @include line-height($l, 62);
+        }
+        &--xl {
+            @include clamp-cqi(font-size, 16, $xl, --cont-w);
+        }
+        &--xxl {
+            @include clamp-cqi(font-size, 20, $xxl, --cont-w);
+        }
+        &--highlight {
+            color: var(--primary-color) !important;
+            &-02 {
+                color: var(--secondary-color) !important;
+            }
+        }
+        &--num {
+            @include clamp-cqi(font-size, 20, 118, --cont-w);
+        }
+        &--weight {
+            &-r {
+                font-weight: 400 !important;
+            }
+            &-m {
+                font-weight: 500 !important;
+            }
+            &-sb {
+                font-weight: 600 !important;
+            }
+            &-b {
+                font-weight: 700 !important;
+            }
+        }
+    }
+    &-footnote {
+        @include clamp-cqi(font-size, 11, $xs, --cont-w);
+        font-weight: 500;
+        @media (max-width: 330px) { letter-spacing: -0.01em; }
+    }
+    &-image {
+        &--logo {
+            display: flex;
+            justify-content: center;
+        }
+        &--round {
+            @include clamp-cqi(border-radius, 1, 33, --cont-w);
+            overflow: hidden;
+        }
+        img {
+            width: 100%;
+        }
+    }
+    &-graph {
+        display: flex !important;
+        align-items: flex-end;
+        justify-content: space-between;
+        position: relative;
+        @include clamp-cqi(padding-bottom, 1, 20, --cont-w);
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            @include clamp-cqi(height, 1, 10, --cont-w);
+            background-color: #666666;
+        }
+        dt {
+            @include line-height($s, 34);
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                z-index: 2;
+                width: calc((1% * var(--percent)) - 1px);
+                @include clamp-cqi(height, 1, 10, --cont-w);
+                background-color: var(--primary-color2);
+            }
+        }
+        dd {
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                bottom: 0;
+                left: calc((1% * var(--percent)) + 1px);
+                z-index: 2;
+                @include clamp-cqi(width, 1, 26, --cont-w);
+                @include clamp-cqi(height, 1, 26, --cont-w);
+                background-color: var(--primary-color2);
+                border-radius: 50%;
+                transform: translate(-100%, 28.5%);
+            }
+        }
+    }
+    &-circle-point {
+        display: inline-block;
+        @include clamp-cqi(width, 1, 18, --cont-w);
+        @include clamp-cqi(height, 1, 18, --cont-w);
+        @include clamp-cqi(margin-right, 1, 2, --cont-w);
+        position: relative;
+        border-radius: 50%;
+        &--01 {
+            background-color: #87be9b;
+            border-color: #87be9b;
+        }
+        &--02 {
+            background-color: var(--primary-color2);
+            border-color: var(--primary-color2);
+        }
+        &--half {
+            &::before {
+                content: '';
+                display: block;
+                @include clamp-cqi(width, 1, 9, --cont-w);
+                @include clamp-cqi(height, 1, 18, --cont-w);
+                position: absolute;
+                right: 0;
+                top: 0;
+                border-radius: 0 50% 50% 0;
+                background-color: #fff;
+            }
+            &::after {
+                content: '';
+                display: block;
+                @include clamp-cqi(width, 1, 18, --cont-w);
+                @include clamp-cqi(height, 1, 18, --cont-w);
+                position: absolute;
+                left: 0;
+                top: 0;
+                border-width: 1px;
+                border-style: solid;
+                border-color: inherit;
+                border-radius: 50%;
+                box-sizing: border-box;
+            }
+        }
+    }
+    &-section {
+        &--kv {
+            #{$header} {
+                @include clamp-cqi(top, 1, 66, --cont-w);
+                text-transform: uppercase;
+                color: var(--gray-color);
+                p {
+                    @include clamp-cqi(margin-top, 1, 8, --cont-w);
+                }
+            }
+            #{$body} {
+                @include clamp-cqi(bottom, 1, 70, --cont-w);
+                color: var(--gray-color);
+                #{$image} {
+                    @include clamp-cqi(margin-bottom, 1, 18, --cont-w);
+                    img {
+                        @include clamp-cqi(width, 1, 540, --cont-w);
+                    }
+                }
+            }
+        }
+        &--summary {
+            #{$section}__title {
+                @include clamp-cqi(top, 1, 120, --cont-w);
+            }
+            #{$header} {
+                &-text {
+                    @include clamp-cqi(bottom, 1, 36, --cont-w);
+                    ul {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                    }
+                    li {
+                        @include clamp-cqi(width, 1, 564, --cont-w);
+                        @include clamp-cqi(padding-top, 1, 29, --cont-w);
+                        @include clamp-cqi(padding-bottom, 1, 36, --cont-w);
+                        border-bottom: 1px solid #666;
+                        &:last-child {
+                            border-bottom: 0;
+                        }
+                    }
+                    dt {
+                        @include line-height(39, 55);
+                    }
+                    dd {
+                        @include clamp-cqi(margin-top, 1, 14, --cont-w);
+                    }
+                }
+            }
+            #{$body} {
+                @include clamp-cqi(padding-top, 1, 133, --cont-w);
+                @include clamp-cqi(padding-bottom, 1, 133, --cont-w);
+                ul {
+                    display: flex;
+                    flex-direction: column;
+                    @include clamp-cqi(gap, 1, 20, --cont-w);
+                }
+                li {
+                    display: flex;
+                    @include clamp-cqi(gap, 1, 20, --cont-w);
+                }
+                #{$image} {
+                    flex-grow: 0;
+                    flex-shrink: 0;
+                    @include clamp-cqi(flex-basis, 1, 318, --cont-w);
+                    @include clamp-cqi(width, 1, 318, --cont-w);
+                }
+            }
+        }
+        &--voices {
+            #{$header} {
+                @include clamp-cqi(top, 1, 84, --cont-w);
+                #{$section}__title {
+                    @include clamp-cqi(margin-bottom, 1, 10, --cont-w);
+                    text-transform: uppercase;
+                }
+            }
+            #{$body} {
+                @include clamp-cqi(bottom, 1, 90, --cont-w);
+                ul {
+                    display: flex;
+                    justify-content: space-between;
+                }
+                li {
+                    width: 50%;
+                    &:last-child {
+                        &::after {
+                            content: '';
+                            display: block;
+                            width: 1px;
+                            @include clamp-cqi(height, 1, 138, --cont-w);
+                            position: absolute;
+                            left: 50%;
+                            top: 50%;
+                            background-color: #666;
+                            transform: translate(-50%, -50%);
+                        }
+                    }
+                    p {
+                        @include clamp-cqi(margin-top, 1, 12, --cont-w);
+                    }
+                }
+            }
+        }
+        &--feature {
+            #{$header}-text {
+                @include clamp-cqi(top, 1, 66, --cont-w);
+            }
+            #{$section}__title {
+                @include clamp-cqi(margin-top, 1, 16, --cont-w);
+            }
+            &-01 {
+                #{$header}-text {
+                    color: #fff;
+                }
+                #{$body} {
+                    @include clamp-cqi(padding-top, 1, 133, --cont-w);
+                    @include clamp-cqi(padding-bottom, 1, 133, --cont-w);
+                    #{$c-body} {
+                        @include clamp-cqi(width, 1, 656, --cont-w);
+                        top: 50%;
+                        transform: translateY(-50%);
+                        p {
+                            @include clamp-cqi(margin-bottom, 1, 8, --cont-w);
+                        }
+                    }
+                }
+            }
+            &-02 {
+                @include clamp-cqi(padding-bottom, 1, 110, --cont-w);
+                #{$section}__title {
+                    white-space: nowrap;
+                }
+                #{$header} {
+                    @include clamp-cqi(padding-top, 1, 66, --cont-w);
+                    background-color: #f6f5f1;
+                    ul {
+                        width: 100%;
+                        @include clamp-cqi(height, 1, 231, --cont-w);
+                        @include clamp-cqi(margin-top, 1, 50, --cont-w);
+                    }
+                    li {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        @include clamp-cqi(width, 1, 240, --cont-w);
+                        @include clamp-cqi(height, 1, 240, --cont-w);
+                        @include clamp-cqi(padding-left, 1, 36, --cont-w);
+                        @include clamp-cqi(padding-right, 1, 36, --cont-w);
+                        border: 1px solid var(--primary-color2);
+                        border-radius: 50%;
+                        text-align: center;
+                        &:nth-child(1) {
+                            left: 0;
+                        }
+                        &:nth-child(2) {
+                            left: 50%;
+                            transform: translateX(-50%);
+                        }
+                        &:nth-child(3) {
+                            right: 0;
+                        }
+                        &:nth-child(4) {
+                            @include clamp-cqi(left, 1, 104, --cont-w);
+                            @include clamp-cqi(top, 1, 181, --cont-w);
+                        }
+                        &:nth-child(5) {
+                            @include clamp-cqi(right, 1, 104, --cont-w);
+                            @include clamp-cqi(top, 1, 181, --cont-w);
+                        }
+                    }
+                    dt {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        @include clamp-cqi(min-height, 1, 64, --cont-w);
+                        line-height: 1;
+                    }
+                    li.short dt {
+                        @include clamp-cqi(padding-top, 1, 12, --cont-w);
+                    }
+                    dd {
+                        @include clamp-cqi(margin-top, 1, 8, --cont-w);
+                        @include line-height($xs, 24);
+                    }
+                }
+                #{$body} {
+                    #{$cont} {
+                        @include clamp-cqi(margin-top, 1, 84, --cont-w);
+                        &__title {
+                            @include clamp-cqi(margin-top, 1, 20, --cont-w);
+                        }
+                    }
+                    #{$c-body} {
+                        ul {
+                            @include clamp-cqi(height, 1, 275, --cont-w);
+                            @include clamp-cqi(margin-top, 1, 84, --cont-w);
+                            @include clamp-cqi(margin-bottom, 1, 88, --cont-w);
+                        }
+                        li {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            @include clamp-cqi(width, 1, 275, --cont-w);
+                            @include clamp-cqi(height, 1, 275, --cont-w);
+                            @include clamp-cqi(padding-top, 1, 6, --cont-w);
+                            border: 1px solid var(--primary-color2);
+                            border-radius: 50%;
+                            color: #595757 !important;
+                            &:nth-child(1) {
+                                @include clamp-cqi(left, 1, 68, --cont-w);
+                            }
+                            &:nth-child(2) {
+                                @include clamp-cqi(right, 1, 68, --cont-w);
+                            }
+                            p {
+                                @include line-height($s-l, 36);
+                            }
+                            strong {
+                                letter-spacing: -0.035em;
+                            }
+                            sup {
+                                top: -0.65em;
+                                font-size: 50%;
+                            }
+                        }
+                    }
+                    #{$c-footer} {
+                        @include clamp-cqi(margin-top, 1, 96, --cont-w);
+                        ul {
+                            @include clamp-cqi(margin-top, 1, 36, --cont-w);
+                        }
+                        li {
+                            @include line-height($xs, 28);
+                        }
+                    }
+                }
+            }
+            &-03 {
+                #{$body} {
+                    @include clamp-cqi(bottom, 1, 120, --cont-w);
+                }
+            }
+            &-04 {
+                #{$body} {
+                    @include clamp-cqi(padding-top, 1, 128, --cont-w);
+                    @include clamp-cqi(padding-bottom, 1, 128, --cont-w);
+                    #{$c-body} {
+                        #{$image} {
+                            @include clamp-cqi(width, 1, 561, --cont-w);
+                            @include clamp-cqi(margin-top, 1, 52, --cont-w);
+                            @include clamp-cqi(margin-bottom, 1, 52, --cont-w);
+                            margin-left: auto;
+                            margin-right: auto;
+                        }
+                    }
+                    #{$c-footer} {
+                        @include clamp-cqi(margin-top, 1, 76, --cont-w);
+                        p {
+                            @include clamp-cqi(margin-top, 1, 36, --cont-w);
+                        }
+                    }
+                }
+            }
+        }
+        &--emphasis {
+            #{$body} {
+                @include clamp-cqi(bottom, 1, 36, --cont-w);
+                color: #fff;
+                ul {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+                li {
+                    @include clamp-cqi(width, 1, 564, --cont-w);
+                    @include clamp-cqi(padding-top, 1, 28, --cont-w);
+                    @include clamp-cqi(padding-bottom, 1, 28, --cont-w);
+                    border-bottom: 1px solid #fff;
+                    color: #fff !important;
+                    @include line-height($m, 55);
+                    &:last-child {
+                        border-bottom: 0;
+                    }
+                }
+            }
+        }
+        &--testimony {
+            @include clamp-cqi(padding-top, 1, 100, --cont-w);
+            #{$header} {
+                ul {
+                    @include clamp-cqi(height, 1, 275, --cont-w);
+                }
+                li {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    @include clamp-cqi(width, 1, 275, --cont-w);
+                    @include clamp-cqi(height, 1, 275, --cont-w);
+                    @include clamp-cqi(padding-top, 1, 6, --cont-w);
+                    @include clamp-cqi(padding-left, 1, 36, --cont-w);
+                    @include clamp-cqi(padding-right, 1, 36, --cont-w);
+                    border: 1px solid var(--primary-color2);
+                    border-radius: 50%;
+                    &:nth-child(1) {
+                        @include clamp-cqi(left, 1, 68, --cont-w);
+                    }
+                    &:nth-child(2) {
+                        @include clamp-cqi(right, 1, 68, --cont-w);
+                    }
+                }
+            }
+            #{$body} {
+                @include clamp-cqi(margin-top, 1, 94, --cont-w);
+                ul {
+                    @include clamp-cqi(margin-top, 1, 48, --cont-w);
+                }
+                li {
+                    @include clamp-cqi(margin-top, 1, 24, --cont-w);
+                }
+                p {
+                    @include clamp-cqi(margin-top, 1, 40, --cont-w);
+                }
+            }
+        }
+        &--color-shade {
+            @include clamp-cqi(margin-top, 1, 128, --cont-w);
+            #{$body} {
+                #{$image} {
+                    @include clamp-cqi(margin-top, 1, 70, --cont-w);
+                }
+            }
+        }
+        &--comparison {
+            @include clamp-cqi(margin-top, 1, 95, --cont-w);
+            @include clamp-cqi(padding-bottom, 1, 132, --cont-w);
+            #{$body} {
+                ul {
+                    display: flex;
+                    justify-content: flex-end;
+                    @include clamp-cqi(padding-left, 1, 130, --cont-w);
+                }
+                table {
+                    border-collapse: collapse;
+                    border-top: 1px solid #666;
+                }
+                th, td {
+                    @include clamp-cqi(height, 1, 70, --cont-w);
+                    @include clamp-cqi(padding-top, 1, 8, --cont-w);
+                    @include clamp-cqi(padding-bottom, 1, 8, --cont-w);
+                    border-bottom: 1px solid #666;
+                    border-right: 1px solid #666;
+                    @include line-height($xs, 24);
+                    &:first-child {
+                        @include clamp-cqi(width, 1, 130, --cont-w);
+                    }
+                    &:last-child {
+                        border-right: 0;
+                    }
+                }
+            }
+        } 
+    }
+}
