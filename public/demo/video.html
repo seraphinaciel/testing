@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Observer TEST</title>
+</head>
+<style>
+    *{margin:0;padding:0}
+    .section{display:flex;flex-direction:column;align-items:center;justify-content:center;height:300vh}
+    .section--01{background-color:bisque}
+    .section--02{background-color:#bdb76b}
+    p{margin-bottom:1.25em;font-size:2rem;font-weight:700;letter-spacing:-.125em}
+    .ap-video,.ap-video2{height:100vh}
+
+    /* 비디오 스타일 세팅 */
+    .ap-video video,.ap-video2 video{width:100%;-webkit-mask-image:-webkit-radial-gradient(#fff,#000);-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden}
+    .pc-only{display:block}
+    .mo-only{display:none}
+    @media (max-width:750px){
+    .pc-only{display:none}
+    .mo-only{display:block}
+    }
+
+    /* 2023 접근성 자막영역 공통 UI */
+    .ap2022-video-script-box {position:relative; z-index:1; padding:0.5em; background:#e4e4e4; font-size:16px; line-height:1.6; box-sizing:border-box;}
+    .ap2022-video-script-box * {margin:0; padding:0;}
+    .ap2022-video-script-box *, .ap2022-video-script-box *::before, .ap2022-video-script-box *::after {box-sizing:border-box;}
+    .ap2022-video-script-box__toggle {overflow:hidden; margin-top:0.5625em; transition:max-height .12s ease-in;}
+    .ap2022-video-script-box__text {overflow-y:scroll; padding:1em 1.25em; border-radius:0.375em; background:#fff; max-height:8.4em; text-align:left; color:#000; box-sizing:border-box;}
+    .ap2022-video-script-box__text sup {position:static !important; vertical-align:super !important; font-size:smaller !important;}
+    .ap2022-video-script-box__header {padding:0.0625em 0.375em; text-align:right; line-height:1;}
+    .ap2022-video-script-box__header button:focus {outline:none !important; outline-offset:0.125em !important;}
+    .ap2022-video-script-box__header button:focus-visible {outline:1px auto !important; outline-offset:0.125em !important;}
+    .ap2022-video-script-box__button {font-size:inherit; overflow:visible; border:0; border-radius:0; background:none; cursor:pointer; outline:none;}
+    .ap2022-video-script-box__button span {display:inline-block; vertical-align:middle; font-size:0.875em; font-weight:600; color:#000;}
+    .ap2022-video-script-box__button i {position:relative; display:inline-block; vertical-align:middle; width:3.125em; height:1.625em; margin-left:0.375em; background:#adadad; border-radius:0.8125em; font-size:1em; transition:background-color .12s ease-in;}
+    .ap2022-video-script-box__button i::before {content:''; position:absolute; top:50%; left:0.25em; width:1.125em; height:1.125em; background:#fff; border-radius:50%; transform:translate(0, -50%); transition:transform .12s ease-in;}
+    .ap2022-video-script-box.is-active .ap2022-video-script-box__button i {background:#6e7584;}
+    .ap2022-video-script-box.is-active .ap2022-video-script-box__button i::before {transform:translate(calc((3.125em - 0.5em) - 100%), -50%);}
+    @media (max-width:750px) {
+    .ap2022-video-script-box {font-size:14px;}
+    }
+</style>
+
+<body>
+    <div class="section section--01">
+        <p>비디오가 2개인 경우</p>
+        <div class="ap-video">
+            <video class="pc-only" src="../assets/images/video_pc_test.mp4" autoplay muted playsinline loop controls></video>
+            <video class="mo-only" src="../assets/images/video_mo_test.mp4" autoplay muted playsinline loop controls></video>
+            <!-- 접근성 자막 추가 -->
+            <div class="ap2022-video-script-box">
+                <div class="ap2022-video-script-box__text">
+                    비디오가 2개인 경우
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section section--02">
+        <p>비디오가 1개인 경우</p>
+        <div class="ap-video2">
+            <video src="../assets/images/video_pc_test.mp4" autoplay muted playsinline loop controls></video>
+        </div>
+    </div>
+    <script>
+        (function() {
+            // apVideoObserver 함수
+            function apVideoObserver(wrap, params = {}) {
+                const elements = document.querySelectorAll(wrap);
+                const defaults = {
+                    options: {
+                        threshold: 0.3, // 타겟 요소가 30% 가시성이 확인되었을 때
+                    }
+                };
+
+                const options = { ...defaults, ...params };
+
+                if (elements.length === 0) return;
+
+                const io = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        const videos = entry.target.querySelectorAll('video');
+                        
+                        videos.forEach(video => {
+                            // const isHidden = window.getComputedStyle(video).display === 'none';
+
+                            // if (entry.intersectionRatio < 0) return;
+                            
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add("active");
+                                video.play();
+                                video.dataset.paused = false;
+                            } else {
+                                entry.target.classList.remove("active");
+                                video.pause();
+                                video.muted = true;
+                                video.dataset.paused = true;
+                            }
+                        });
+                    });
+                }, options.options);
+
+                elements.forEach(element => io.observe(element));
+            }
+
+            // apVideoObserver 함수 사용 예제
+            apVideoObserver('.ap-video', { 
+                options: {
+                    threshold: 0.5, // 원하는 가시성 임계값
+                    root: null, // 기본값이 null이며, viewport가 기준
+                    rootMargin: '0px',
+                }
+            });
+            apVideoObserver('.ap-video2');
+
+
+
+            // 2023 접근성 공통 UI
+            const AP2022A11Y = (function() {
+                const _hasScroll = function(scrollElement) {
+                    if (scrollElement.scrollHeight > scrollElement.clientHeight) {
+                    scrollElement.setAttribute('tabindex', 0);
+                    } else {
+                    scrollElement.removeAttribute('tabindex');
+                    }
+                }
+
+                const _getScrollHeight = function(scrollElement) {
+                    const computedStyles = window.getComputedStyle(scrollElement);
+                    return (computedStyles.maxHeight !== 'none') ? computedStyles.maxHeight : computedStyles.height;
+                }
+
+                // 동영상 자막영역 UI
+                const setVideoScript = {
+                    show: function(params) {
+                    const _this = this;
+                    const defaults = {
+                        rootClass: 'ap2022-video-script-box',
+                        textAreaClass: 'ap2022-video-script-box__text'
+                    }
+
+                    params = params || {};
+                    for (const prop in defaults) {
+                        params[prop] = (prop in params) ? params[prop] : defaults[prop];
+                    }
+
+                    const videoScriptElement = document.querySelectorAll('.'.concat(params.rootClass));
+
+                    if (videoScriptElement.length > 0) {
+                        videoScriptElement.forEach(function(item) {
+                        const textElement = item.querySelector('.'.concat(params.textAreaClass));
+                        if (textElement) {
+                            _hasScroll(textElement);
+                            window.addEventListener('resize', function() {
+                            _hasScroll(textElement);
+                            });
+                        }
+                        });
+                    }
+                    },
+                    toggle: function(params) {
+                    const _this = this;
+                    const defaults = {
+                        rootClass: 'ap2022-video-script-box',
+                        textAreaClass: 'ap2022-video-script-box__text',
+                        headerClass: 'ap2022-video-script-box__header',
+                        toggleClass: 'ap2022-video-script-box__toggle',
+                        buttonClass: 'ap2022-video-script-box__button',
+                        activeClass: 'is-active',
+                        activeDescription: '닫기',
+                        inactiveDescription: '열기',
+                        buttonLabel: '자막'
+                    }
+
+                    params = params || {};
+                    for (const prop in defaults) {
+                        params[prop] = (prop in params) ? params[prop] : defaults[prop];
+                    }
+                    
+                    const videoScriptElement = document.querySelectorAll('.'.concat(params.rootClass));
+                    const buttonContent = '<span>' + params.buttonLabel + '</span><i></i>';
+                    const buttonHTML = '<button type="button" class="' + params.buttonClass + '" title="' + params.inactiveDescription + '">' + buttonContent + '</button>';
+
+                    if (videoScriptElement.length > 0) {
+                        videoScriptElement.forEach(function(item) {
+                        const textElement = item.querySelector('.'.concat(params.textAreaClass));
+                        if (textElement) {
+                            // toggle UI 를 위한 HTML 생성
+                            const headerElement = document.createElement('div');
+                            headerElement.className = params.headerClass;
+                            headerElement.innerHTML = buttonHTML;
+                            item.insertBefore(headerElement, item.firstChild);
+
+                            const textElementWrapper = document.createElement('div');
+                            textElementWrapper.className = params.toggleClass;
+                            textElement.parentNode.insertBefore(textElementWrapper, textElement);
+                            textElementWrapper.appendChild(textElement);
+                            textElementWrapper.style.display = 'none';
+                            textElementWrapper.style.maxHeight = '0px';
+
+                            // toggle 버튼 이벤트 추가
+                            item.addEventListener('click', function(e) {
+                            const buttonElement = e.target.closest('.'.concat(params.buttonClass));
+                            if (buttonElement) {
+                                if (!item.classList.contains(params.activeClass)) {
+                                item.classList.add(params.activeClass);
+                                buttonElement.setAttribute('title', params.activeDescription);
+                                textElementWrapper.style.display = '';
+                                textElementWrapper.style.maxHeight = _getScrollHeight(textElement);
+                                _hasScroll(textElement);
+                                } else {
+                                item.classList.remove(params.activeClass);
+                                buttonElement.setAttribute('title', params.inactiveDescription);
+                                textElementWrapper.style.maxHeight = '0px';
+
+                                if (window.getComputedStyle(textElementWrapper).transitionDuration === '0s') {
+                                    textElementWrapper.style.display = 'none';
+                                    _hasScroll(textElement);
+                                } else {
+                                    textElementWrapper.addEventListener('transitionend', function() {
+                                    if (!item.classList.contains(params.activeClass) && textElementWrapper.style.display === '') {
+                                        textElementWrapper.style.display = 'none';
+                                        _hasScroll(textElement);
+                                    }
+                                    });
+                                }
+                                }
+                            }
+                            });
+
+                            window.addEventListener('resize', function() {
+                            if (textElementWrapper.style.display !== 'none') {
+                                textElementWrapper.style.maxHeight = _getScrollHeight(textElement);
+                                _hasScroll(textElement);
+                            }
+                            });
+                        }
+                        });
+                    }
+                    }
+                }
+
+                return {
+                    setVideoScript: setVideoScript
+                }
+            })();
+            
+            // 접근성 자막 추가
+            AP2022A11Y.setVideoScript.toggle();
+        })();
+    </script>
+</body>
+
+</html>

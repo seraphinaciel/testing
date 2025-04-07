@@ -1,0 +1,362 @@
+/// Font family
+// $base-font-size: 24 !default;
+// $line-height: 1.6 !default;
+
+$laneige: (
+    kr: (
+        'Gellix',
+        'NotoSansKR',
+        'NotoSansCJK',
+        'Arita',
+    ),
+    int: (
+        'Gellix',
+        'Arita',
+    ),
+    cn: (
+        'Gellix',
+        'NotoSans SC',
+        'Microsoft YaHei',
+    ),
+    hk: (
+        'Gellix',
+        'Noto Sans TC',
+        'Microsoft Yahei',
+    ),
+    sg: (
+        'Gellix',
+        'Helvetica',
+        'Helvetica Neue',
+        'Arial',
+        'Lucida Grande',
+    ),
+    my: (
+        'Gellix',
+        'Arita',
+    ),
+    th: (
+        'Gellix',
+        'Noto Sans Thai',
+        Helvetica,
+        'Helvetica Neue',
+        Arial,
+        'Lucida Grande',
+    ),
+    id: (
+        'Gellix',
+        'arm',
+        'AppleGothic',
+    ),
+    tw: (
+        'Gellix',
+        'Noto Sans TC',
+        'Microsoft Yahei',
+    ),
+    vn: (
+        'Pretendard-fullset',
+        'Arial',
+    ),
+    ph: (
+        'Gellix',
+        'Helvetica',
+        'Helvetica Neue',
+        'Arial',
+        'Lucida Grande',
+    ),
+    jp: (
+        'Gellix',
+        'Noto Sans JP',
+        sans-serif,
+    ),
+);
+
+$sws: (
+    default: (
+        NotoSans,
+        'Malgun Gothic',
+        '맑은 고딕',
+        'Nanum Gothic',
+        '나눔 고딕',
+        '돋움',
+        dotum,
+        sans-serif,
+    ),
+    kr: (
+        Theinhardt,
+        NotoSans,
+        'Malgun Gothic',
+        '맑은 고딕',
+        'Nanum Gothic',
+        '나눔 고딕',
+        '돋움',
+        dotum,
+    ),
+    int: (
+        Theinhardt,
+        NotoSans,
+        'Malgun Gothic',
+        '맑은 고딕',
+        'Nanum Gothic',
+        '나눔 고딕',
+        '돋움',
+        dotum,
+    ),
+    cn: (
+        Theinhardt,
+        NotoSans,
+        'Microsoft Yahei',
+    ),
+    sg: (
+        Theinhardt,
+        'Noto Sans',
+        Helvetica,
+        'Helvetica Neue',
+        Arial,
+        'Lucida Grande',
+    ),
+    my: (
+        Theinhardt,
+        'Noto Sans',
+        Helvetica,
+        'Helvetica Neue',
+        Arial,
+        'Lucida Grande',
+    ),
+    th: (
+        Theinhardt,
+        'Noto Sans',
+        Tahoma,
+        Helvetica,
+        'Helvetica Neue',
+        Arial,
+        'Lucida Grande',
+    ),
+    vn: (
+        'Noto Sans',
+        Helvetica,
+        'Helvetica Neue',
+        Arial,
+        'Lucida Grande',
+    ),
+    id: (
+        Theinhardt,
+        NotoSans,
+    ),
+    hk: (
+        Theinhardt,
+        'Noto Sans TC',
+        'Microsoft Yahei',
+    ),
+    tw: (
+        Theinhardt,
+        'Noto Sans TC',
+        'Microsoft Yahei',
+    ),
+);
+
+// 250115 default 'Montserrat' 삭제
+// 250122 cn 'Montserrat' 삭제
+$hera: (
+    default: (
+        Cera Pro,
+        'NotoSans',
+        'Malgun Gothic',
+        '맑은 고딕',
+        'Nanum Gothic',
+        '나눔 고딕',
+        돋움,
+        dotum,
+        sans-serif,
+    ),
+    jp: (
+        Cera Pro,
+        Noto Sans JP,
+    ),
+    cn: (
+        'Arita Heiti',
+        Cera Pro,
+        sans-serif,
+    ),
+    th: (
+        Cera Pro,
+        prompt,
+    ),
+);
+
+$mmd: (
+    kr: (
+        Pretendard,
+        'Arita Dotum',
+        'Helvetica Neue',
+        sans-serif,
+    ),
+    int: (
+        Pretendard,
+        'Arita Dotum',
+        'Helvetica Neue',
+        sans-serif,
+    ),
+    cn: (
+        'Arita',
+        'Microsoft Yahei',
+        'MS Yahei',
+        'tahoma',
+        'Arial',
+        'Apple Gothic',
+        'verdana',
+        'sans-serif',
+    ),
+);
+
+$iope: (
+    kr: (
+        'Inter Tight',
+        Arita,
+        NanumBarunGothic,
+        '나눔바른고딕',
+        'Malgun Gothic',
+        '맑은 고딕',
+        '돋움',
+        dotum,
+        sans-serif,
+    ),
+    int: (
+        Muli,
+        sans-serif,
+    ),
+    cn: (
+        'Microsoft Yahei',
+        '微软雅黑',
+        'Microsoft Yahei UI',
+        'SimSun',
+        'SimHei',
+        Helvetica,
+        Arial,
+        sans-serif,
+    ),
+);
+
+$newap: (
+    kr: (
+        'noto-sans-cjk-kr',
+        sans-serif,
+    ),
+    hk: (
+        'futura-pt',
+        'Noto Sans TC',
+        sans-serif,
+    ),
+    int: (
+        'noto-sans-cjk-kr',
+        sans-serif,
+    ),
+    cn: (
+        'futura-pt',
+        'NotoSans SC',
+        sans-serif,
+    ),
+);
+
+$prmr: (
+    kr: (
+        'aritaM',
+        'Malgun Gothic',
+        '맑은 고딕',
+        'Nanum Gothic',
+        '나눔 고딕',
+        '돋움',
+        dotum,
+        sans-serif,
+    ),
+    cn: (
+        'aritaM',
+        'Microsoft Yahei',
+        '微软雅黑',
+        'Microsoft Yahei UI',
+        'SimSun',
+        'SimHei',
+        Helvetica,
+        Arial,
+        sans-serif,
+    ),
+);
+
+$hyul: (
+    kr: (
+        'suit',
+        'Arita',
+        'Malgun Gothic',
+        '맑은 고딕',
+        '돋움',
+        dotum,
+        sans-serif,
+    ),
+);
+
+$mes: (
+    kr: (
+        'aritaSB',
+        'aritaM',
+        'RixSGo L',
+        'Malgun Gothic',
+        '맑은 고딕',
+        '돋움',
+        dotum,
+        sans-serif,
+    ),
+    hk: (
+        'Microsoft Yahei',
+        'Malgun Gothic',
+        '맑은 고딕',
+        '돋움',
+        dotum,
+        sans-serif,
+    ),
+    tw: (
+        'Microsoft Yahei',
+        'Malgun Gothic',
+        '맑은 고딕',
+        '돋움',
+        dotum,
+        sans-serif,
+    ),
+);
+
+$ryo: (
+    kr: (
+        '맑은 고딕',
+        'Malgun Gothic',
+        '돋움',
+        Dotum,
+        AppleGothic,
+        sans-serif,
+    ),
+    hk: (
+        'source-han-sans-traditional',
+        'Microsoft YaHei',
+        '宋體',
+        'simsun',
+        Arial,
+        sans-serif,
+    ),
+    tw: (
+        'source-han-sans-traditional',
+        'Microsoft YaHei',
+        '宋體',
+        'simsun',
+        Arial,
+        sans-serif,
+    ),
+);
+
+$vb: (
+    kr: (
+        'arm',
+        '맑은 고딕',
+        Malgun Gothic,
+        '돋움',
+        Dotum,
+        AppleGothic,
+        sans-serif,
+    ),
+);

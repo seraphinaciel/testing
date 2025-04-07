@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>countUp test</title>
+<style>
+    .section {height:100vh;}
+    .section .result {margin-right:2rem; font-size:5rem; color:#e86e25;}
+</style>
+</head>
+<body>
+    <div class="section section--01">
+        <span class="result"><span data-countup="54">0</span></span>
+        <span class="result"><span data-countup="120.81" data-countup-dp="2">0</span>%</span>
+        <span class="result"><span data-countup="1.999" data-countup-dp="3">0</span>%</span>
+    </div>
+
+    <div class="section section--02">
+        <span class="result" data-countup="7912">0</span>
+        <span class="result" data-countup="5900">0</span>
+        <span class="result" data-countup="1900">0</span>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/countup.js@2.8.0/dist/countUp.umd.js"></script>
+    <script>
+        (function() {
+            // countUp 인스턴스 생성
+            function createCountUp(target, params = {}) {
+                const data = target.dataset;
+                const endVal = parseFloat(data.countup);
+                const decimalPlaces = Number(data.countupDp);
+                const defaults = { // default options
+                    duration: 1.5,
+                    enableScrollSpy: true,
+                    scrollSpyOnce: false,
+                    scrollSpyDelay: 0,
+                    decimalPlaces: decimalPlaces || 0,
+                    useEasing: false, //easing option. default: easeOutExpo
+                }
+                
+                const options = { ...defaults, ...params };
+                // console.log(options);
+
+                return new countUp.CountUp(target, endVal, options); 
+            }
+
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const countUpEl = document.querySelectorAll('[data-countup]');
+                
+                countUpEl.forEach(elem => {
+                    let animCountUp;
+
+                    if (elem.closest('.section--02')) {
+                        // 일부 요소에만 옵션값 다르게 적용할 경우
+                        animCountUp = createCountUp(elem, {
+                            scrollSpyOnce: true
+                        });
+                    } else {
+                        animCountUp = createCountUp(elem);
+                    }
+
+                    if (!animCountUp.error) {
+                        animCountUp.handleScroll()
+                    } else {
+                        console.error(animCountUp.error);
+                    }
+                })
+
+            });
+        })();
+    </script>
+</body>
+</html>

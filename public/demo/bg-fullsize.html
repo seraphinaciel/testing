@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Full-size Image Test</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            margin-left: 1rem;
+            margin-right: 1rem;
+            text-align: center;
+            background: #000;
+            color: #fff;
+            line-height: 1.5;
+        }
+        /* .container {max-width:2560px; margin:0 auto;} */
+        .bg-w1920 {
+            background: url(https://amc.apglobal.com/image/384224417642/image_kgc72qhp9942r1i9rdf3tqgf4l/-FJPG/concentrated_ginseng_renewing_intro_pc_w1920.jpg) no-repeat 50% 50%;
+            background-size: cover;
+            height: 56.25vw;
+        }
+        .bg-w2560 {
+            background: url(https://amc.apglobal.com/image/384224417642/image_i2885si46h4l927fr1ggc5bd69/-FJPG/concentrated_ginseng_renewing_intro_pc_w2560.jpg) no-repeat 50% 50%;
+            background-size: cover;
+            height: clamp(42.1875vw, 56.25vw, 1080px);
+        }
+        .bg-w3440 {
+            background: url(https://amc.apglobal.com/image/384224417642/image_0ed8do5dut1u79vcnd0i8sji64/-FJPG/concentrated_ginseng_renewing_intro_pc_w3440.jpg) no-repeat 50% 50%;
+            background-size: cover;
+            height: clamp(31.395349vw, 56.25vw, 1080px);
+        }
+        .img-wrap {
+            overflow: hidden;
+        }
+        .img-wrap img {
+            min-width: 100%;
+            max-width: none;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <h1>Full-size Image Test</h1>
+    <div class="container">
+        <!-- background-image type -->
+        <h2>1. Background-image type</h2>
+        <div class="bg-w1920"></div>
+        <div class="bg-w2560"></div>
+        <div class="bg-w3440"></div>
+
+        <!-- image type -->
+        <h2>2. Image type</h2>
+        <div class="img-wrap">
+            <img src="https://amc.apglobal.com/image/384224417642/image_kgc72qhp9942r1i9rdf3tqgf4l/-FJPG/concentrated_ginseng_renewing_intro_pc_w1920.jpg" alt="" />
+        </div>
+        <div class="img-wrap">
+            <img src="https://amc.apglobal.com/image/384224417642/image_i2885si46h4l927fr1ggc5bd69/-FJPG/concentrated_ginseng_renewing_intro_pc_w2560.jpg" alt="" />
+        </div>
+        <div class="img-wrap">
+            <img src="https://amc.apglobal.com/image/384224417642/image_0ed8do5dut1u79vcnd0i8sji64/-FJPG/concentrated_ginseng_renewing_intro_pc_w3440.jpg" alt="" />
+        </div>
+    </div>
+</body>
+</html>

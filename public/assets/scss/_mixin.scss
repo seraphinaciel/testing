@@ -1,0 +1,127 @@
+@use 'sass:math';
+
+// ============================================================
+// fuction
+// ============================================================
+@function decimal-round($point) {
+    @return math.div(math.round($point * 10000), 10000);
+}
+@function check-var($value) {
+    @if (type-of($value) == 'number') {
+        @return $value;
+    } @else {
+        @return var($value);
+    }
+}
+
+// ============================================================
+// percent * @include percent(1000, 60);
+// ============================================================
+@mixin percent($attr, $base, $value) {
+    #{$attr}: decimal-round(calc(($value / $base) * 100%));
+}
+
+// ============================================================
+// line-height * @include line-height(26, 35);
+// ============================================================
+@mixin line-height($base, $value) {
+    line-height: decimal-round(calc($value / $base));
+}
+
+// ============================================================
+// clamp * @include clamp(font-size, 11, 36, --container-width);
+// ============================================================
+@mixin clamp($attr, $min, $max, $container-width) {
+    #{$attr}: clamp(#{$min}px, #{calc($max / var($container-width) * 100vw)}, #{$max}px);
+}
+
+// ============================================================
+// clamp-cqi * @include clamp-cqi(font-size, 11, 36, --container-width);
+// clamp-cqi function * clamp-cqi(11, 36, --container-width);
+// ============================================================
+@mixin clamp-cqi($attr, $min, $max, $container-width) {
+    @if $max < 0 {
+        #{$attr}: #{calc($max / var($container-width) * 100cqi)};
+    } @else {
+        #{$attr}: clamp(#{$min}px, #{calc($max / var($container-width) * 100cqi)}, #{$max}px);
+    }
+}
+@function clamp-cqi($min, $max, $container-width) {
+    @if $min < 0 {
+        @return #{calc(check-var($max) / check-var($container-width) * 100cqi)};
+    } @else {
+        @return clamp(#{calc(check-var($min) * 1px)}, #{calc(check-var($max) / check-var($container-width) * 100cqi)}, #{calc(check-var($max) * 1px)});
+    }
+}
+
+// ============================================================
+// Flex * @include flex(end, center);
+// ============================================================
+@mixin flex($justify: center, $align: center) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    @content;
+}
+@mixin flex-column($justify: center, $align: center) {
+    @include flex($justify, $align);
+    flex-direction: column;
+}
+
+// ============================================================
+// Position * @include pos-abs($x: 10px, $y: 10px, $r: 10px, $b: 10px, $z: 1);
+// ============================================================
+@mixin pos-null {
+    position: static;
+    transform: translate(0);
+}
+@mixin pos-abs($t: 0, $r: null, $b: null, $l: 0, $z: null) {
+    position: absolute;
+    top: $t;
+    right: $r;
+    bottom: $b;
+    left: $l;
+    z-index: $z;
+    @content;
+}
+@mixin pos-x($t: null, $r: null, $b: null, $l: 50%, $z: null) {
+    @include pos-abs($t, $r, $b, $l, $z) {
+        $y: calc($l * -1);
+        transform: translateX($y);
+    }
+}
+@mixin pos-y($t: 50%, $r: null, $b: null, $l: null, $z: null) {
+    @include pos-abs($t, $r, $b, $l, $z) {
+        $y: calc($t * -1);
+        transform: translateY($y);
+    }
+}
+@mixin pos-xy($t: 50%, $l: 50%, $x: -50%, $y: -50%, $z: null) {
+    position: absolute;
+    top: $t;
+    left: $l;
+    z-index: $z;
+    transform: translate($x, $y);
+}
+@mixin pos-z($z: 1) {
+    position: relative;
+    z-index: $z;
+}
+
+// ============================================================
+//  text-ellipsis * @include ellipsis or @include ellipsis(n) ( 기본값 1 줄 )
+// ============================================================
+@mixin ellipsis($line: 1) {
+    @if ($line==1) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    } @else {
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-wrap: break-word; // 공백 없을때 글자 짤림 방지
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: $line;
+    }
+}

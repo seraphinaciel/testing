@@ -1,0 +1,107 @@
+@use 'hera-story' as *;
+
+// * 스와이퍼 불릿 스타일 설정
+// * @param {number} $bullet-mo - 모바일에서의 불릿 크기
+// * @param {number} $bullet-pc - PC에서의 불릿 크기
+// * @param {color} $bg - 불릿 배경색
+// * @param {color} $bg-active - 활성화된 불릿 배경색
+@mixin swiper-bullet($bullet-mo, $bullet-pc, $bg, $bg-active) {
+    --ap-bullet-size: #{$bullet-pc};
+    @include cc {
+        --ap-bullet-size: #{$bullet-mo};
+    }
+
+    width: page-gap(--ap-bullet-size);
+    height: page-gap(--ap-bullet-size);
+    background-color: $bg;
+    opacity: 1;
+
+    &-active {
+        background-color: $bg-active;
+    }
+}
+
+// * 스와이퍼 버튼 스타일 설정
+// * @param {number|string} $size - 버튼 크기 ('null'인 경우 기본값 사용)
+// * @param {length} $position-vertical-mo - 모바일에서의 세로 위치
+// * @param {length} $position-vertical - PC에서의 세로 위치
+// * @param {color} $border-color - 버튼 테두리 색상
+@mixin swiper-button($size, $position-vertical-mo, $position-vertical, $border-color) {
+    @if ($size == 'null') {
+        $size: page-gap(40);
+        width: $size;
+        height: $size;
+    } @else {
+        $size: $size;
+        width: $size;
+        height: $size;
+    }
+    top: $position-vertical;
+    background-image: none;
+    border: 3px solid $border-color;
+    border-right: none;
+    border-bottom: none;
+
+    &::before,
+    &::after {
+        background-image: none;
+    }
+
+    @include cc {
+        top: $position-vertical-mo;
+    }
+}
+
+// * 스와이퍼 수평 방향 버튼 위치 및 회전 설정
+// * @param {string} $name - 버튼 유형 ('prev' 또는 'next')
+// * @param {length} $position-horizontal-mo - 모바일에서의 가로 위치
+// * @param {length} $position-horizontal - PC에서의 가로 위치
+@mixin swiper-horizon($name, $position-horizontal-mo, $position-horizontal, $prev-rotate: -45, $next-rotate: 135) {
+    @if ($name == 'prev') {
+        left: $position-horizontal;
+        transform: rotate($prev-rotate + deg);
+        @include cc {
+            left: $position-horizontal-mo;
+        }
+    } @else if($name == 'next') {
+        right: $position-horizontal;
+        transform: rotate($next-rotate + deg);
+        @include cc {
+            right: $position-horizontal-mo;
+        }
+    }
+}
+
+.ap-swiper {
+    position: relative;
+
+    &__inner {
+        overflow: hidden;
+    }
+
+    .swiper {
+        &-slide {
+            box-sizing: border-box;
+        }
+
+        &-pagination-bullet {
+            @include swiper-bullet(13, 16, $color-black, grey);
+        }
+
+        &-button {
+            $size: page-gap(40);
+            $position-horizontal-mo: page-gap(9);
+            $position-horizontal: page-gap(50);
+            $position-vertical-mo: 50%;
+            $position-vertical: 50%;
+
+            @include swiper-button($size, $position-vertical-mo, $position-vertical, #000);
+            &-prev {
+                @include swiper-horizon('prev', $position-horizontal-mo, $position-horizontal);
+            }
+            &-next {
+                @include swiper-horizon('next', $position-horizontal-mo, $position-horizontal);
+            }
+        }
+    }
+}

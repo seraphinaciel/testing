@@ -1,0 +1,290 @@
+@charset "UTF-8";
+
+@use 'sass:map';
+@use 'public/assets/scss/common' as *;
+
+// ^ mixin
+// * PDP 요소 간격 계산
+// * @param {number|variable} $value - 간격 값 또는 변수
+// * @returns {calculation} - 반응형 간격 값
+@function pdp-gap($value) {
+    @if (type-of($value) == 'number') {
+        @if ($value < 0) {
+            @return clamp-cqi($value, $value, --ap-pdp-width);
+        }
+        @return clamp-cqi(0, $value, --ap-pdp-width);
+    }
+    @return clamp-cqi(0, $value, --ap-pdp-width);
+}
+
+// * PDP 폰트 크기 및 라인 높이 설정
+// * @param {number|variable} $font - 폰트 크기 또는 변수
+// * @param {number|variable} $line - 라인 높이 또는 변수 (선택)
+@mixin pdp-fonts($font, $line: null) {
+    font-size: clamp-cqi(9, $font, --ap-pdp-width);
+
+    @if ($line != null) {
+        line-height: calc(check-var($line) / check-var($font));
+    }
+}
+
+// * 가상 요소(::before, ::after) 스타일 설정
+// * @param {number|percentage} $w - 가상 요소 너비 (기본값: 100%)
+// * @param {number|percentage} $h - 가상 요소 높이 (기본값: 100%)
+// * @param {string} $display - 표시 방식
+// * @param {string} $content - 가상 요소 내용
+@mixin pseudo($w: 100%, $h: 100%, $display: inline-block, $content: '') {
+    width: $w;
+    height: $h;
+    display: $display;
+    vertical-align: middle;
+    content: $content;
+}
+
+// * 프로그레스 바 스타일 설정
+// * @param {number} $height - 프로그레스 바 높이
+// * @param {number} $bullet - 불릿 크기
+// * @param {number|percentage} $values - 진행률 값
+// * @param {color} $bg - 배경색
+// * @param {color} $color - 프로그레스 바 색상
+@mixin progress-bar($height, $bullet, $values, $bg, $color) {
+    width: 100%;
+    height: $height;
+    background-color: $bg;
+
+    &::before {
+        left: calc(#{$values} - #{$bullet});
+        border-radius: 50%;
+        background: $color;
+        @include pseudo($bullet, $bullet);
+        @include pos-y($z: 1);
+    }
+
+    &::after {
+        background-color: $color;
+        @include pseudo($values, $height);
+        @include pos-abs($t: auto, $b: 0, $l: 0);
+    }
+
+    &[style*='--ap-bar-values: 100%'] {
+        &,
+        &::after {
+            border-radius: 0 #{$height} #{$height} 0;
+        }
+    }
+}
+
+// * 그래프 스타일 설정
+// * @param {number} $gap - 항목 간 간격
+// * @param {list} $cols - 열 구성 (항목 수, 아이템 수)
+// * @param {map|list} $heights - 높이 값 목록
+// * @param {color} $color-border - 테두리 색상
+// * @param {list} $color-bg - 배경색 목록
+// * @param {boolean} $multi - 다중 높이 여부
+// * 예) @include graph((19, 60), $cols, $heights, $color-border, $color-bg, true)
+// <div class="ap-graph">
+//     <dl class="ap-graph__list ap-graph__list--01">
+//         <dd class="ap-graph__body">
+//             <div class="ap-graph__item ap-graph__item--before"><span class="ap-graph__text">사용 전</span></div>
+//             <div class="ap-graph__item ap-graph__item--after"><span class="ap-graph__text">사용 직후</span>
+//                 <strong class="ap-graph__desc">
+//                     <span class="ap-graph__small">내용</span>
+//                     <span class="ap-graph__big">93.10%</span>
+//                 </strong>
+//             </div>
+//         </dd>
+//         <dt class="ap-graph__caption">
+//             <strong class="ap-graph__title ap-graph__title--colored">내용</strong>
+//             부가설명
+//         </dt>
+//     </dl>
+// </div>
+// * 아래는 그래프 변수 설정
+$gaps: (19, 60);
+$cols: (2, 2);
+$heights: (20, 100);
+$color-bg: (pink, aliceblue);
+@mixin graph($gaps, $cols, $heights, $color-border: black, $color-bg, $multi: false) {
+    @if length($gaps) > 1 {
+        column-gap: pdp-gap(nth($gaps, 1));
+        row-gap: pdp-gap(nth($gaps, 2));
+    } @else {
+        gap: pdp-gap($gaps);
+    }
+    text-align: center;
+    box-sizing: border-box;
+    @include flex(space-between, stretch) {
+        flex-wrap: wrap;
+    }
+
+    &__list {
+        $col-size: calc(nth($cols, 1) * 5px);
+        width: calc(100% / nth($cols, 1) - $col-size);
+        margin-top: pdp-gap(15);
+        box-sizing: border-box;
+    }
+
+    &__caption {
+        margin-top: pdp-gap(20);
+    }
+
+    &__body {
+        height: pdp-gap(275);
+        padding: 0 pdp-gap(40);
+        border-bottom: 4px solid $color-border;
+        @include flex($align: flex-end);
+    }
+
+    &__item {
+        position: relative;
+        flex: 1 1 calc(100% / nth($cols, 2));
+        @include flex(center, flex-end);
+
+        @for $i from 1 through length($color-bg) {
+            &:nth-of-type(#{$i}) {
+                background-color: nth($color-bg, $i);
+                border-top: 10px solid $color-border;
+            }
+        }
+    }
+
+    // 높이값 설정
+    $count: if(type-of($heights) == map, length(map-keys($heights)), length($heights));
+    @if $multi {
+        @if type-of($heights) == map {
+            @each $key, $value in $heights {
+                &__list--0#{$key} {
+                    [class*='--before'] {
+                        height: calc(nth($value, 1) * 1%);
+                    }
+
+                    [class*='--after'] {
+                        height: calc(nth($value, 2) * 1%);
+                    }
+                }
+            }
+        }
+    } @else {
+        &__item {
+            @for $i from 1 through $count {
+                &:nth-of-type(#{$i}) {
+                    height: calc(nth($heights, $i) * 1%);
+                }
+            }
+        }
+    }
+
+    &__title {
+        display: block;
+    }
+
+    &__desc {
+        @include pos-abs(pdp-gap(20), 0, 0, 0);
+
+        sup {
+            font-size: 70%;
+        }
+    }
+
+    &__text {
+        margin-bottom: pdp-gap(10);
+    }
+
+    &__big {
+        font-weight: 600;
+    }
+
+    @content;
+}
+
+// ^ variables
+$pdp: 720;
+$color-default: #222;
+$color-point: #6691ff;
+$name: '.ap-pdp' !default;
+$section: '.ap-section';
+
+// ^ common setting
+.ap-pdp {
+    --ap-pdp-width: #{$pdp};
+    container: article / inline-size;
+    max-width: $pdp * 1px;
+    min-width: 280px;
+    margin: 0 auto;
+
+    // ! 국가에 맞게 변경
+    font-family: map-get($laneige, int);
+
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    color: $color-default;
+    line-height: normal;
+    * {
+        padding: 0;
+        margin: 0;
+        font-style: normal;
+        word-break: keep-all;
+        list-style: none;
+    }
+    em {
+        color: inherit;
+    }
+    sup {
+        vertical-align: text-top;
+        font-size: inherit;
+        line-height: normal;
+        position: static;
+    }
+    img {
+        max-width: 100%;
+    }
+    blockquote {
+        font-style: normal;
+        color: inherit;
+    }
+
+    .ap-video video {
+        -webkit-mask-image: -webkit-radial-gradient(#fff, #000);
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        border: none;
+        display: block;
+        margin: 0 auto;
+        outline: none;
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+    }
+
+    .pc-only {
+        display: block;
+        @media (max-width: #{$pdp}px) {
+            display: none;
+        }
+    }
+
+    // ^ text
+    .ap-section__text {
+        letter-spacing: calc(var(--ap-ls, -0.01) * 1em);
+        font-weight: var(--ap-fw, 500);
+        @include pdp-fonts(--ap-fs, --ap-lh);
+    }
+    .ap-section__sup {
+        @include pdp-fonts(20);
+    }
+
+    // ^ margin
+    .ap-ma {
+        @each $dir in top, bottom, left, right {
+            margin-#{$dir}: pdp-gap(--ap-#{$dir}) !important;
+        }
+    }
+    // ^ text align
+    .ap-ta {
+        text-align: var(--ap-ta) !important;
+    }
+    // ^ font weight
+    .ap-fw {
+        font-weight: var(--ap-fw) !important;
+    }
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: linear-gradient(38deg, rgba(224,223,255,1) 0%, rgba(255,255,255,1) 100%);
+        }
+        .layer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            height: 100vh;
+            color: #000;
+            font-size: 5.208vw;
+            background-image: url(shadow.svg); /* innerShadow 효과 추가 */
+            /* background-image: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48ZmlsdGVyIGlkPSJwcmVmaXhfX2EiPjxmZUdhdXNzaWFuQmx1ciBpbj0iU291cmNlR3JhcGhpYyIgc3RkRGV2aWF0aW9uPSIyIi8+PC9maWx0ZXI+PC9kZWZzPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQ1IiBmaWxsPSIjZmZmIiBzdHJva2U9InJnYmEoMCwwLDAsLjUpIiBmaWx0ZXI9InVybCgjcHJlZml4X19hKSIvPjwvc3ZnPg==); */
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            background-size: 400% 400%;
+            mask-image: url(mask.svg);
+            /* mask-image: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48ZmlsdGVyIGlkPSJwcmVmaXhfX2EiPjxmZUdhdXNzaWFuQmx1ciBpbj0iU291cmNlR3JhcGhpYyIgc3RkRGV2aWF0aW9uPSIyIi8+PC9maWx0ZXI+PC9kZWZzPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQ1IiBmaWx0ZXI9InVybCgjcHJlZml4X19hKSIvPjwvc3ZnPg==); */
+            mask-repeat: no-repeat;
+            mask-position: 50% 50%;
+            mask-size: 400% 400%;
+            transition: all 1s ease-in-out;
+        }
+        .layer:hover {
+            background-size: 50% 50%;
+            mask-size: 50% 50%;
+            /* opacity: 0; */
+        }
+    </style>
+</head>
+<body>
+    <div class="layer">
+        content content content content content 
+        content content content content content 
+        content content content content content 
+        content content content content content 
+        content content content content content 
+        content content content content content 
+        content content content content content 
+        content content content content content 
+        content content content content content 
+    </div>
+</body>
+</html>

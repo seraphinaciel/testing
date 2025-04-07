@@ -1,0 +1,57 @@
+@import 'public/assets/scss/mixin';
+@import 'public/assets/scss/typography';
+
+@mixin mobile {
+    @container article (max-width: 640px) {
+        @content;
+    }
+}
+
+.ap {
+    &-pdp {
+        --container-article-width-l: 1100;
+        --container-article-width-min: 280;
+        container-name: article;
+        container-type: inline-size;
+        max-width: var(--container-article-width-l);
+        min-width: var(--container-article-width-min);
+        margin: 0 auto;
+        background-color: #fff;
+        font-family: map-get($sws, int);
+        sup {
+            font-family: map-get($sws, default);
+        }
+        .only-pc {
+            display: block;
+        }
+        .only-mo {
+            display: none;
+        }
+        @include mobile {
+            .only-pc {
+                display: none;
+            }
+
+            .only-mo {
+                display: block;
+            }
+        }
+    }
+    &-video {
+        width: 100%;
+        overflow: hidden;
+        video {
+            display: block;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            transform: scale(1.015);
+            transform-origin: center;
+            -webkit-mask-image: -webkit-radial-gradient(white, black);
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+        }
+    }
+    &-sub {
+    }
+}

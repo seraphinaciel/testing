@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>설화수 PDP TEST</title>
+</head>
+<body>
+  <!-- TEST 용 -->
+  <style>
+    @font-face {
+      font-family:'Theinhardt';
+      font-style:normal;
+      font-weight:400;
+      font-display:swap;
+      src:url(https://amc.apglobal.com/asset/384224417642/other_ptq0djepp50096psd60a5m6757?content-disposition=inline/Theinhardt-Light.woff) format('woff');
+      unicode-range:U+0041-005A,U+0061-007A,U+0030-0039,U+0201-00F6;
+    }
+    @font-face {
+      font-family:'Theinhardt';
+      font-style:normal;
+      font-weight:500;
+      font-display:swap;
+      src:url(https://amc.apglobal.com/asset/384224417642/other_crrlb7vj9t5edd43miu58s0449?content-disposition=inline/Theinhardt-Regular.woff) format('woff');
+      unicode-range:U+0041-005A,U+0061-007A,U+0030-0039,U+0201-00F6;
+    }
+    @font-face {
+      font-family:'Theinhardt';
+      font-style:normal;
+      font-weight:700;
+      font-display:swap;
+      src:url(https://amc.apglobal.com/asset/384224417642/other_2eurt6pnr538t5kknr4mem9t4u?content-disposition=inline/Theinhardt-Medium.woff) format('woff');
+      unicode-range:U+0041-005A,U+0061-007A,U+0030-0039,U+0201-00F6;
+    }
+
+    html {
+      font-size: 62.5%;
+      -webkit-text-size-adjust: none;
+      -ms-text-size-adjust: none
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .wrapper-test-ics {padding-left:90px; padding-right:90px;}
+    .wrapper-test-shopify {padding-left:15px; padding-right:15px;}
+    .wrapper-test-magento {padding-left:30px; padding-right:30px;}
+    @media (max-width: 767px) {
+      .wrapper-test-ics {padding-left:20px; padding-right:20px;}
+      /* .wrapper-test-shopify .ap-pdp {margin-left:0; margin-right:0;} */
+      .wrapper-test-magento {padding-left:0; padding-right:0;}
+    }
+  </style>
+  <!-- //TEST 용 -->
+
+
+  <div class="wrapper-test-shopify"><!-- 플랫폼별 여백 TEST 클래스 : ICS = wrapper-test-ics / 쇼피파이 = wrapper-test-shopify / 마젠토 = wrapper-test-magento -->
+    <style>
+      .ap-pdp h1,.ap-pdp h2,.ap-pdp h3,.ap-pdp h4,.ap-pdp h5,.ap-pdp h6,.ap-pdp p{font-size:inherit;font-weight:inherit;line-height:inherit;margin:0;padding:0;}
+      .ap-pdp ol, .ap-pdp ul {list-style:none;margin:0;padding:0;}
+      .ap-pdp button{-webkit-appearance:none;background:0;border:0;box-sizing:content-box;overflow:visible;}
+      .ap-pdp a,.ap-pdp button{cursor:pointer;}
+      .ap-pdp a:hover{text-decoration:none;}
+      .ap-pdp img{height:auto;vertical-align:top;width:100%;}
+      .ap-pdp .display-mo,.ap-pdp .hidden,.ap-pdp .m-br{display:none;}
+      .ap-pdp .pc-br{display:block;}
+      .ap-pdp .blind{clip:rect(1px 1px 1px 1px);clip:rect(1px, 1px, 1px, 1px);height:1px;overflow:hidden;position:absolute !important;width:1px;}
+      .ap-pdp .img-box{display:block;}
+      :root{--ap-pdp-text-black00:#000;--ap-pdp-text-black01:#262626;--ap-pdp-text-white00:#fff;--ap-pdp-text-signature00:#e86e25;--ap-pdp-font-family:Theinhardt, NotoSans, "Malgun Gothic", "맑은 고딕", "Nanum Gothic", "나눔 고딕", "돋움", dotum, sans-serif;}
+      .ap-pdp{--container-article-width-l:1100;--container-article-width-s:640;--container-article-width-min:280;background-color:#fff;color:var(--ap-pdp-text-black00);container-name:article;container-type:inline-size;font-family:var(--ap-pdp-font-family);line-height:1.2;margin-left:auto;margin-right:auto;max-width:1100px;min-width:calc(280 * 1px);text-align:center;}
+      .ap-section{position:relative;}
+      .ap-section .only-pc{display:block;}
+      .ap-section .only-mo{display:none;}
+      .ap-section .ap-absolute{left:0;position:absolute;top:0;width:100%;}
+      .ap-section .ap-absolute--bottom{bottom:0;top:auto;}
+      .ap-section .ap-absolute--custom-width{left:50%;transform:translateX(-50%);width:calc(100% - clamp(0px, calc(124 / var(--container-article-width-l) * 100cqi), 124px));}
+      .ap-section .ap-relative{position:relative;}
+      .ap-section .ap-text-right{text-align:right;}
+      .ap-section .ap-text-left{text-align:left;}
+      .ap-section .ap-inner{margin:0 clamp(0px, calc(62 / var(--container-article-width-l) * 100cqi), 62px);}
+      .ap-section .ap-logo{margin-left:auto;margin-right:auto;width:clamp(0px, calc(247 / var(--container-article-width-l) * 100cqi), 247px);}
+      .ap-section .ap-title{font-size:clamp(11px, calc(70 / var(--container-article-width-l) * 100cqi), 70px);font-weight:500;letter-spacing:0.1em;line-height:1.3571428571;text-transform:uppercase;}
+      .ap-section .ap-title--m{font-size:clamp(11px, calc(65 / var(--container-article-width-l) * 100cqi), 65px);line-height:1.4769230769;}
+      .ap-section .ap-txt{color:var(--ap-pdp-text-black01);font-size:clamp(11px, calc(42 / var(--container-article-width-l) * 100cqi), 42px);font-weight:500;letter-spacing:0.1em;line-height:1.5238095238;}
+      .ap-section .ap-txt--m{font-size:clamp(11px, calc(46 / var(--container-article-width-l) * 100cqi), 46px);line-height:1.3695652174;}
+      .ap-section .ap-desc{color:var(--ap-pdp-text-black01);font-size:clamp(11px, calc(23 / var(--container-article-width-l) * 100cqi), 23px);font-weight:500;letter-spacing:-0.06em;}
+      .ap-section--intro .ap-section__header{margin-top:clamp(0px, calc(224 / var(--container-article-width-l) * 100cqi), 224px);}
+      .ap-section--intro .ap-title{margin-top:clamp(0px, calc(84 / var(--container-article-width-l) * 100cqi), 84px);}
+      .ap-section--intro .ap-txt{margin-top:clamp(0px, calc(34 / var(--container-article-width-l) * 100cqi), 34px);}
+      .ap-section--con01{background-color:#f1f1f1;padding-bottom:clamp(0px, calc(63 / var(--container-article-width-l) * 100cqi), 63px);}
+      .ap-section--con01 .ap-title{color:var(--ap-pdp-text-black01);margin-top:clamp(0px, calc(40 / var(--container-article-width-l) * 100cqi), 40px);top:50%;transform:translateY(-50%);}
+      .ap-section--con01 .ap-txt{letter-spacing:-0.01em;margin-top:clamp(0px, calc(122 / var(--container-article-width-l) * 100cqi), 122px);}
+      .ap-section--con01 .ap-image{margin-left:auto;margin-right:auto;margin-top:clamp(0px, calc(82 / var(--container-article-width-l) * 100cqi), 82px);width:clamp(0px, calc(864 / var(--container-article-width-l) * 100cqi), 864px);}
+      .ap-section--con02{background-color:#f1f1f1;}
+      .ap-section--con02 .ap-title{color:var(--ap-pdp-text-white00);margin-bottom:clamp(0px, calc(110 / var(--container-article-width-l) * 100cqi), 110px);}
+      .ap-section--con02 .ap-section__body{margin-left:clamp(0px, calc(60 / var(--container-article-width-l) * 100cqi), 60px);margin-right:clamp(0px, calc(64 / var(--container-article-width-l) * 100cqi), 64px);margin-top:clamp(0px, calc(158 / var(--container-article-width-l) * 100cqi), 158px);}
+      .ap-section--con02 .ap-txt{letter-spacing:-0.01em;margin-top:clamp(0px, calc(65 / var(--container-article-width-l) * 100cqi), 65px);}
+      .ap-section--con02 .ap-image{margin-left:auto;margin-right:0;width:clamp(0px, calc(791 / var(--container-article-width-l) * 100cqi), 791px);}
+      .ap-section--con03 .ap-section__header{margin-bottom:clamp(0px, calc(46 / var(--container-article-width-l) * 100cqi), 46px);}
+      .ap-section--con03 .ap-txt{letter-spacing:-0.01em;margin-top:clamp(0px, calc(46 / var(--container-article-width-l) * 100cqi), 46px);}
+      .ap-section--con03 .ap-txt+.ap-txt{display:flex;margin-top:clamp(0px, calc(39 / var(--container-article-width-l) * 100cqi), 39px);}
+      .ap-section--con03 .ap-txt+.ap-txt:before{background-image:url(https://www.sulwhasoo.com/int/en/resource/img/products/signature_ginseng_facial_soap_con03_check_int_240118.png);background-position:50%;background-repeat:no-repeat;background-size:cover;content:"";display:block;height:0;margin-left:clamp(0px, calc(6 / var(--container-article-width-l) * 100cqi), 6px);margin-right:clamp(0px, calc(16 / var(--container-article-width-l) * 100cqi), 16px);margin-top:clamp(0px, calc(1 / var(--container-article-width-l) * 100cqi), 1px);padding-top:clamp(0px, calc(38 / var(--container-article-width-l) * 100cqi), 38px);width:clamp(0px, calc(34 / var(--container-article-width-l) * 100cqi), 34px);}
+      .ap-section--con04 .ap-section__header{margin-top:clamp(0px, calc(211 / var(--container-article-width-l) * 100cqi), 211px);}
+      .ap-section--con04 .ap-txt{letter-spacing:-0.01em;margin-top:clamp(0px, calc(48 / var(--container-article-width-l) * 100cqi), 48px);}
+      .ap-section--05 .ap-section__inner{margin-bottom:clamp(0px, calc(14 / var(--container-article-width-l) * 100cqi), 14px);}
+      .ap-section--05 .ap-title{color:var(--ap-pdp-text-signature00);}
+      .ap-section--05 .txt-wrap{align-items:center;display:flex;justify-content:space-between;position:relative;top:calc(50% + clamp(0px, calc(4 / var(--container-article-width-l) * 100cqi), 4px));transform:translateY(-50%);}
+      .ap-section--05 .item-num{color:var(--ap-pdp-text-signature00);font-size:clamp(11px, calc(108 / var(--container-article-width-l) * 100cqi), 108px);font-weight:700;letter-spacing:-0.01em;position:relative;right:clamp(0px, calc(6 / var(--container-article-width-l) * 100cqi), 6px);top:clamp(0px, calc(8 / var(--container-article-width-l) * 100cqi), 8px);}
+      .ap-section--05 .custom-font-size{font-size:clamp(11px, calc(55 / var(--container-article-width-l) * 100cqi), 55px);position:relative;right:clamp(0px, calc(11 / var(--container-article-width-l) * 100cqi), 11px);}
+      .ap-section--05 .item-txt{color:#51443f;font-size:clamp(11px, calc(23 / var(--container-article-width-l) * 100cqi), 23px);font-weight:500;letter-spacing:0.12em;line-height:1.5652173913;}
+      .ap-section--05 .ap-feel{margin-left:auto;margin-top:clamp(0px, calc(69 / var(--container-article-width-l) * 100cqi), 69px);width:clamp(0px, calc(570 / var(--container-article-width-l) * 100cqi), 570px);}
+      .ap-section--05 .ap-feel__item{border-bottom:3px solid #cdbeb0;border-bottom-width:clamp(0px, calc(3 / var(--container-article-width-l) * 100cqi), 3px);box-sizing:border-box;height:clamp(0px, calc(176 / var(--container-article-width-l) * 100cqi), 176px);position:relative;}
+      .ap-section--05 .ap-feel__item:before{height:clamp(0px, calc(3 / var(--container-article-width-l) * 100cqi), 3px);left:0;top:100%;width:91%;}
+      .ap-section--05 .ap-feel__item:after,.ap-section--05 .ap-feel__item:before{background-color:var(--ap-pdp-text-signature00);content:"";display:block;position:absolute;}
+      .ap-section--05 .ap-feel__item:after{border-radius:100%;box-sizing:border-box;height:clamp(0px, calc(11 / var(--container-article-width-l) * 100cqi), 11px);left:90%;top:97.5%;width:clamp(0px, calc(11 / var(--container-article-width-l) * 100cqi), 11px);}
+      .ap-section--05 .ap-feel__item+.ap-feel__item{margin-top:clamp(0px, calc(3 / var(--container-article-width-l) * 100cqi), 3px);}
+      .ap-section--05 .ap-feel__item--03 .custom-font-size,.ap-section--05 .ap-feel__item--04 .custom-font-size{right:0;}
+      .ap-section--05 .ap-feel__item--03:before,.ap-section--05 .ap-feel__item--04:before{width:88%;}
+      .ap-section--05 .ap-feel__item--03:after,.ap-section--05 .ap-feel__item--04:after{left:87%;}
+      .ap-section--05 .ap-desc{color:rgba(0,0,0,.5);font-size:clamp(11px, calc(23 / var(--container-article-width-l) * 100cqi), 23px);font-weight:500;letter-spacing:-0.01em;line-height:1.4782608696;margin-top:clamp(0px, calc(131 / var(--container-article-width-l) * 100cqi), 131px);transform:translateY(clamp(-27px, calc(-27 / var(--container-article-width-l) * 100cqi), 0px));}
+      .ap-section--collection{background-color:#eee;padding-bottom:clamp(0px, calc(146 / var(--container-article-width-l) * 100cqi), 146px);padding-top:clamp(0px, calc(182 / var(--container-article-width-l) * 100cqi), 182px);}
+      .ap-section--collection .txt-wrap{text-align:left;white-space:nowrap;}
+      .ap-section--collection .txt-wrap span{display:block;}
+      .ap-section--collection .item-title{color:var(--ap-pdp-text-black00);font-weight:500;letter-spacing:0.05em;line-height:1.3125;}
+      .ap-section--collection .item-title,.ap-section--collection .item-txt{font-size:clamp(11px, calc(32 / var(--container-article-width-l) * 100cqi), 32px);}
+      .ap-section--collection .item-txt{color:var(--ap-pdp-text-signature00);font-weight:400;letter-spacing:-0.035em;margin-top:clamp(0px, calc(8 / var(--container-article-width-l) * 100cqi), 8px);}
+      .ap-section--collection .ap-product{display:flex;justify-content:center;margin-top:clamp(0px, calc(133 / var(--container-article-width-l) * 100cqi), 133px);}
+      .ap-section--collection .ap-product__item--01{margin-left:clamp(0px, calc(50 / var(--container-article-width-l) * 100cqi), 50px);margin-top:clamp(0px, calc(248 / var(--container-article-width-l) * 100cqi), 248px);}
+      .ap-section--collection .ap-product__item--01 .ap-image{margin-left:auto;width:clamp(0px, calc(179 / var(--container-article-width-l) * 100cqi), 179px);}
+      .ap-section--collection .ap-product__item--01 .txt-wrap{margin-top:clamp(0px, calc(16 / var(--container-article-width-l) * 100cqi), 16px);position:relative;right:clamp(0px, calc(28 / var(--container-article-width-l) * 100cqi), 28px);text-align:right;}
+      .ap-section--collection .ap-product__item--02{margin-left:clamp(0px, calc(33 / var(--container-article-width-l) * 100cqi), 33px);position:relative;}
+      .ap-section--collection .ap-product__item--02 .ap-image{width:clamp(0px, calc(187 / var(--container-article-width-l) * 100cqi), 187px);}
+      .ap-section--collection .ap-product__item--02 .txt-wrap{left:100%;margin-left:clamp(0px, calc(31 / var(--container-article-width-l) * 100cqi), 31px);margin-top:clamp(0px, calc(83 / var(--container-article-width-l) * 100cqi), 83px);position:absolute;top:0;}
+      .ap-section--collection .ap-product__item--03{margin-left:clamp(0px, calc(33 / var(--container-article-width-l) * 100cqi), 33px);margin-top:clamp(0px, calc(359 / var(--container-article-width-l) * 100cqi), 359px);}
+      .ap-section--collection .ap-product__item--03 .ap-image{width:clamp(0px, calc(259 / var(--container-article-width-l) * 100cqi), 259px);}
+      .ap-section--collection .ap-product__item--03 .txt-wrap{margin-left:clamp(0px, calc(11 / var(--container-article-width-l) * 100cqi), 11px);margin-top:clamp(0px, calc(24 / var(--container-article-width-l) * 100cqi), 24px);}
+      @container article (max-width: 640px){
+        .ap-section .only-pc{display:none;}
+        .ap-section .only-mo{display:block;}
+        .ap-section .ap-absolute--custom-width{width:calc(100% - clamp(0px, calc(74 / var(--container-article-width-s) * 100cqi), 74px));}
+        .ap-section .ap-logo{width:clamp(0px, calc(144 / var(--container-article-width-s) * 100cqi), 144px);}
+        .ap-section .ap-title{font-size:clamp(11px, calc(41 / var(--container-article-width-s) * 100cqi), 41px);line-height:1.3414634146;}
+        .ap-section .ap-title--m{font-size:clamp(11px, calc(38 / var(--container-article-width-s) * 100cqi), 38px);line-height:1.4473684211;}
+        .ap-section .ap-txt{font-size:clamp(11px, calc(25 / var(--container-article-width-s) * 100cqi), 25px);line-height:1.48;}
+        .ap-section .ap-txt--m{font-size:clamp(11px, calc(27 / var(--container-article-width-s) * 100cqi), 27px);line-height:1.3703703704;}
+        .ap-section .ap-desc{font-size:clamp(11px, calc(16 / var(--container-article-width-s) * 100cqi), 16px);}
+        .ap-section--intro .ap-section__header{margin-top:clamp(0px, calc(130 / var(--container-article-width-s) * 100cqi), 130px);}
+        .ap-section--intro .ap-title{margin-top:clamp(0px, calc(50 / var(--container-article-width-s) * 100cqi), 50px);}
+        .ap-section--intro .ap-sub-title{margin-top:clamp(0px, calc(20 / var(--container-article-width-s) * 100cqi), 20px);}
+        .ap-section--con01{padding-bottom:clamp(0px, calc(36 / var(--container-article-width-s) * 100cqi), 36px);}
+        .ap-section--con01 .ap-txt{margin-top:clamp(0px, calc(74 / var(--container-article-width-s) * 100cqi), 74px);}
+        .ap-section--con01 .ap-image{margin-top:clamp(0px, calc(48 / var(--container-article-width-s) * 100cqi), 48px);width:clamp(0px, calc(502 / var(--container-article-width-s) * 100cqi), 502px);}
+        .ap-section--con02 .ap-title{margin-bottom:clamp(0px, calc(66 / var(--container-article-width-s) * 100cqi), 66px);}
+        .ap-section--con02 .ap-section__body{margin-left:clamp(0px, calc(40 / var(--container-article-width-s) * 100cqi), 40px);margin-right:clamp(0px, calc(38 / var(--container-article-width-s) * 100cqi), 38px);margin-top:clamp(0px, calc(90 / var(--container-article-width-s) * 100cqi), 90px);}
+        .ap-section--con02 .ap-txt{margin-top:clamp(0px, calc(40 / var(--container-article-width-s) * 100cqi), 40px);}
+        .ap-section--con02 .ap-image{width:clamp(0px, calc(462 / var(--container-article-width-s) * 100cqi), 462px);}
+        .ap-section--con03 .ap-section__header{margin-bottom:clamp(0px, calc(28 / var(--container-article-width-s) * 100cqi), 28px);}
+        .ap-section--con03 .ap-txt{margin-top:clamp(0px, calc(26 / var(--container-article-width-s) * 100cqi), 26px);}
+        .ap-section--con03 .ap-txt+.ap-txt{font-size:clamp(11px, calc(24 / var(--container-article-width-s) * 100cqi), 24px);margin-top:clamp(0px, calc(24 / var(--container-article-width-s) * 100cqi), 24px);}
+        .ap-section--con03 .ap-txt+.ap-txt:before{margin-left:clamp(0px, calc(0 / var(--container-article-width-s) * 100cqi), 0px);margin-right:clamp(0px, calc(10 / var(--container-article-width-s) * 100cqi), 10px);margin-top:clamp(0px, calc(4 / var(--container-article-width-s) * 100cqi), 4px);padding-top:clamp(0px, calc(23 / var(--container-article-width-s) * 100cqi), 23px);width:clamp(0px, calc(20 / var(--container-article-width-s) * 100cqi), 20px);}
+        .ap-section--con04 .ap-section__header{margin-top:clamp(0px, calc(124 / var(--container-article-width-s) * 100cqi), 124px);}
+        .ap-section--con04 .ap-txt{margin-top:clamp(0px, calc(30 / var(--container-article-width-s) * 100cqi), 30px);}
+        .ap-section--05 .ap-section__inner{margin-bottom:clamp(0px, calc(10 / var(--container-article-width-s) * 100cqi), 10px);}
+        .ap-section--05 .item-num{font-size:clamp(11px, calc(63 / var(--container-article-width-s) * 100cqi), 63px);}
+        .ap-section--05 .custom-font-size{font-size:clamp(11px, calc(32 / var(--container-article-width-s) * 100cqi), 32px);right:clamp(0px, calc(0 / var(--container-article-width-s) * 100cqi), 0px);}
+        .ap-section--05 .item-txt{font-size:clamp(0px, calc(16 / var(--container-article-width-s) * 100cqi), 16px);line-height:1.5;}
+        .ap-section--05 .ap-feel{margin-left:auto;margin-top:clamp(0px, calc(38 / var(--container-article-width-s) * 100cqi), 38px);width:clamp(0px, calc(332 / var(--container-article-width-s) * 100cqi), 332px);}
+        .ap-section--05 .ap-feel__item{border-bottom-width:clamp(0px, calc(2 / var(--container-article-width-s) * 100cqi), 2px);height:clamp(0px, calc(102 / var(--container-article-width-s) * 100cqi), 102px);}
+        .ap-section--05 .ap-feel__item:before{height:clamp(0px, calc(2 / var(--container-article-width-s) * 100cqi), 2px);}
+        .ap-section--05 .ap-feel__item:after{height:clamp(0px, calc(6 / var(--container-article-width-s) * 100cqi), 6px);top:98%;width:clamp(0px, calc(6 / var(--container-article-width-s) * 100cqi), 6px);}
+        .ap-section--05 .ap-desc{font-size:clamp(0px, calc(16 / var(--container-article-width-s) * 100cqi), 16px);line-height:1.5;margin-top:clamp(0px, calc(60 / var(--container-article-width-s) * 100cqi), 60px);transform:translateY(clamp(-24px, calc(-24 / var(--container-article-width-s) * 100cqi), 0px));}
+        .ap-section--collection{padding-bottom:clamp(0px, calc(80 / var(--container-article-width-s) * 100cqi), 80px);padding-top:clamp(0px, calc(108 / var(--container-article-width-s) * 100cqi), 108px);}
+        .ap-section--collection .item-title{font-size:clamp(0px, calc(19 / var(--container-article-width-s) * 100cqi), 19px);line-height:1.3684210526;}
+        .ap-section--collection .item-en-title{font-size:clamp(0px, calc(16 / var(--container-article-width-s) * 100cqi), 16px);}
+        .ap-section--collection .item-txt{font-size:clamp(0px, calc(19 / var(--container-article-width-s) * 100cqi), 19px);}
+        .ap-section--collection .ap-product{margin-top:clamp(0px, calc(80 / var(--container-article-width-s) * 100cqi), 80px);}
+        .ap-section--collection .ap-product__item--01{margin-top:clamp(0px, calc(146 / var(--container-article-width-s) * 100cqi), 146px);}
+        .ap-section--collection .ap-product__item--01 .ap-image{width:clamp(0px, calc(104 / var(--container-article-width-s) * 100cqi), 104px);}
+        .ap-section--collection .ap-product__item--01 .txt-wrap{margin-top:clamp(0px, calc(8 / var(--container-article-width-s) * 100cqi), 8px);}
+        .ap-section--collection .ap-product__item--02{margin-left:clamp(0px, calc(20 / var(--container-article-width-s) * 100cqi), 20px);}
+        .ap-section--collection .ap-product__item--02 .ap-image{width:clamp(0px, calc(108 / var(--container-article-width-s) * 100cqi), 108px);}
+        .ap-section--collection .ap-product__item--02 .txt-wrap{margin-top:clamp(0px, calc(46 / var(--container-article-width-s) * 100cqi), 46px);right:clamp(0px, calc(20 / var(--container-article-width-s) * 100cqi), 20px);}
+        .ap-section--collection .ap-product__item--03{margin-left:clamp(0px, calc(20 / var(--container-article-width-s) * 100cqi), 20px);margin-top:clamp(0px, calc(210 / var(--container-article-width-s) * 100cqi), 210px);}
+        .ap-section--collection .ap-product__item--03 .ap-image{width:clamp(0px, calc(150 / var(--container-article-width-s) * 100cqi), 150px);}
+        .ap-section--collection .ap-product__item--03 .txt-wrap{margin-left:clamp(0px, calc(6 / var(--container-article-width-s) * 100cqi), 6px);}
+      }
+      /* ICS 모바일 좌우 20px 여백은 공통 CSS 처리로 변경 - 240507 */
+      /* @media (max-width:767px){
+        .ap-pdp{margin:0 20px;}
+      } */
+    </style>
+    <article class="ap-pdp ap-pdp--signature-ginseng-facial-soap" data-article-year="2024">
+      <div class="ap-pdp__inner">
+        <!-- intro -->
+        <section class="ap-section ap-section--intro">
+          <div class="ap-section__header ap-absolute">
+            <div class="ap-logo">
+              <img src="https://www.sulwhasoo.com/int/en/resource/img/products/signature_ginseng_facial_soap_logo_int_240118.png" alt="Sulwhasoo" />
+            </div>
+            <p class="ap-title ap-title--m">
+              Ginseng-infused facial<br />
+              soap with a gentle<br />
+              cashmere-like foam
+            </p>
+            <h3 class="ap-txt ap-txt--m">SIGNATURE GINSENG FACIAL SOAP</h3>
+          </div>
+          <div class="ap-bg">
+            <img src="https://www.sulwhasoo.com/int/en/resource/img/products/signature_ginseng_facial_soap_intro_bg_mo_int_240118.jpg" class="only-mo" alt="Signature Ginseng Facial Soap" />
+            <img src="https://www.sulwhasoo.com/int/en/resource/img/products/signature_ginseng_facial_soap_intro_bg_pc_int_240118.jpg" class="only-pc" alt="Signature Ginseng Facial Soap" />
+          </div>
+        </section>
+        <!-- //intro -->
+
+        <!-- con01 -->
+        <section class="ap-section ap-section--con01">
+          <div class="ap-section__header ap-relative">
+            <p class="ap-title ap-absolute">Sulwhasoo meets &#60;INSAMJANG&#62;</p>
+            <div class="ap-bg">
+              <img src="https://www.sulwhasoo.com/int/en/resource/img/products/signature_ginseng_facial_soap_con01_bg_mo_int_240118.jpg" class="only-mo" alt="" />
+              <img src="https://www.sulwhasoo.com/int/en/resource/img/products/signature_ginseng_facial_soap_con01_bg_pc_int_240118.jpg" class="only-pc" alt="" />
+            </div>
+          </div>
+          <div class="ap-body">
+            <p class="ap-txt ap-txt">
+              Inspired by the luxurious<br />
+              &#60;INSAMJANG&#62;(Ginseng Spa) from<br />
+              the early 20th century, Sulwhasoo crafted its<br />
+              distinctive Signature Ginseng Facial Soap<br />
+              with a touch of refinement.
+            </p>
+            <div class="ap-image">
+              <img src="https://www.sulwhasoo.com/int/en/resource/img/products/signature_ginseng_facial_soap_con01_item_int_240118.jpg" alt="Signature Ginseng Facial Soap" />
+            </div>
+          </div>
+        </section>
+        <!-- //con01 -->
+
+        <!-- con02 -->
+        <section class="ap-section ap-section--con02">
+          <div class="ap-section__header ap-relative ap-text-left">
+            <p class="ap-title ap-absolute ap-absolute--bottom ap-absolute--custom-width">
+              An exquisite treat<br />
+              for your skin<br />
+              with ginseng-infused<br />
+              cashmere-like lather
+            </p>
+            <div class="ap-bg">
+              <img src="https://www.sulwhasoo.com/int/en/resource/img/products/signature_ginseng_facial_soap_con02_bg_mo_int_240118.jpg" class="only-mo" alt="Model to demonstrate Signature Ginseng Facial Soap on the face" />
+              <img src="https://www.sulwhasoo.com/int/en/resource/img/products/signature_ginseng_facial_soap_con02_bg_pc_int_240118.jpg" class="only-pc" alt="Model to demonstrate Signature Ginseng Facial Soap on the face" />
+            </div>
+          </div>
+          <div class="ap-section__body ap-text-left ap-relative">
+            <p class="ap-txt ap-absolute">
+              Formulated with ginseng flower extract,<br />
+              leaves your skin moisturized<br />
+              and revitalized<br />
+              after cleansing.
+            </p>
+            <div class="ap-image">
+              <img src="https://www.sulwhasoo.com/int/en/resource/img/products/signature_ginseng_facial_soap_con02_item_int_240118.jpg" alt="A model who wipes her face with a towel" />
+            </div>
+          </div>
+        </section>
+        <!-- //con02 -->
+
+        <!-- con03 -->
+        <section class="ap-section ap-section--con03">
+          <div class="ap-section__header ap-text-left ap-absolute ap-absolute--bottom ap-absolute--custom-width">
+            <p class="ap-title">
+              velvetY foam with a <br />
+              luxurious texture
+            </p>
+            <p class="ap-txt">
+              A dense and creamy lather that envelops skin <br />
+              to delicately remove impurities from pores and <br />
+              residual make-up.
+            </p>
+            <p class="ap-txt">Hypoallergenic tested</p>
+          </div>
+          <div class="ap-bg">
+            <img src="https://www.sulwhasoo.com/int/en/resource/img/products/signature_ginseng_facial_soap_con03_bg_mo_int_240118.jpg" class="only-mo" alt="Signature Ginseng Facial Soap Bubble texture" />
+            <img src="https://www.sulwhasoo.com/int/en/resource/img/products/signature_ginseng_facial_soap_con03_bg_pc_int_240118.jpg" class="only-pc" alt="Signature Ginseng Facial Soap Bubble texture" />
+          </div>
+        </section>
+        <!-- //con03 -->
+
+        <!-- con04 -->
+        <section class="ap-section ap-section--con04">
+          <div class="ap-section__header ap-absolute">
+            <p class="ap-title">
+              ‘First peace’<br />
+              captures the vibrancy<br />
+              Of ginseng
+            </p>
+            <p class="ap-txt">
+              This fragrance embodies the tranquil yet potent<br />
+              essence of ginseng, evoking a sensory experience<br />
+              reminiscent of a soothing ginseng spa.
+            </p>
+          </div>
+          <div class="ap-bg">
+            <img src="https://www.sulwhasoo.com/int/en/resource/img/products/signature_ginseng_facial_soap_con04_bg_pc_int_240118.jpg" class="only-mo" alt="Signature Ginseng Facial Soap, First Care Activating Serum VI" />
+            <img src="https://www.sulwhasoo.com/int/en/resource/img/products/signature_ginseng_facial_soap_con04_bg_pc_int_240118.jpg" class="only-pc" alt="Signature Ginseng Facial Soap, First Care Activating Serum VI" />
+          </div>
+        </section>
+        <!-- //con04 -->
+
+        <!-- con05 -->
+        <section class="ap-section ap-section--05">
+          <div class="ap-section__inner ap-absolute ap-absolute--bottom ap-absolute--custom-width ap-text-right">
+            <div class="ap-section__header">
+              <p class="ap-title">
+                CASHMERE<br />
+                CLEANSING
+              </p>
+            </div>
+            <div class="ap-section__body">
+              <ul class="ap-feel">
+                <li class="ap-feel__item ap-feel__item--01">
+                  <div class="txt-wrap">
+                    <p class="item-num">97<span class="custom-font-size">%</span></p>
+                    <p class="item-txt">
+                      AGREED BUBBLES FEELS<br />
+                      DENSE AND TIGHT
+                    </p>
+                  </div>
+                </li>
+                <li class="ap-feel__item ap-feel__item--02">
+                  <div class="txt-wrap">
+                    <p class="item-num">97<span class="custom-font-size">%</span></p>
+                    <p class="item-txt">
+                      AGREED FOAM FEELS<br class="only-mo" />
+                      GENTLE<br class="only-pc" />
+                      WITHOUT ANY<br class="only-mo" />
+                      IRRITATION
+                    </p>
+                  </div>
+                </li>
+                <li class="ap-feel__item ap-feel__item--03">
+                  <div class="txt-wrap">
+                    <p class="item-num">95<span class="custom-font-size">%</span></p>
+                    <p class="item-txt">
+                      AGREED SKIN FEELS<br />
+                      HYDRATED AFTER<br />
+                      CLEANSING
+                    </p>
+                  </div>
+                </li>
+                <li class="ap-feel__item ap-feel__item--03">
+                  <div class="txt-wrap">
+                    <p class="item-num">95<span class="custom-font-size">%</span></p>
+                    <p class="item-txt">
+                      AGREED THE FRAGRANT<br />
+                      FEELS RELAXING
+                    </p>
+                  </div>
+                </li>
+              </ul>
+              <dl class="ap-desc">
+                <dt>Sulwhasoo Signature Ginseng Facial Soap HUT</dt>
+                <dd>Subjects: 40 women aged 30-45</dd>
+                <dd>Period: December 2, 2023-December 15, 2023</dd>
+                <dd>Survey agency: Beauty Link Partners Co.</dd>
+              </dl>
+            </div>
+          </div>
+          <div class="ap-bg">
+            <img src="https://www.sulwhasoo.com/int/en/resource/img/products/signature_ginseng_facial_soap_con05_bg_pc_int_240118.jpg" class="only-mo" alt="Model with Signature Ginseng Facial Soap in hand" />
+            <img src="https://www.sulwhasoo.com/int/en/resource/img/products/signature_ginseng_facial_soap_con05_bg_pc_int_240118.jpg" class="only-pc" alt="Model with Signature Ginseng Facial Soap in hand" />
+          </div>
+        </section>
+        <!-- //con05 -->
+
+        <!-- collection -->
+        <section class="ap-section ap-section--collection">
+          <div class="ap-section__header">
+            <h3 class="ap-title">Sulwhasoo cleansing collection</h3>
+          </div>
+          <div class="ap-section__body">
+            <ul class="ap-product">
+              <li class="ap-product__item ap-product__item--01">
+                <div class="ap-image">
+                  <img src="https://www.sulwhasoo.com/int/en/resource/img/products/signature_ginseng_facial_soap_collection_item01_int_240118.png" alt="Gentle Cleansing Foam" />
+                </div>
+                <p class="txt-wrap">
+                  <span class="item-title">
+                    GENTLE<br />
+                    CLEANSING FOAM
+                  </span>
+                  <span class="item-txt">Cleanse & Hydrate</span>
+                </p>
+              </li>
+              <li class="ap-product__item ap-product__item--02">
+                <div class="ap-image">
+                  <img src="https://www.sulwhasoo.com/int/en/resource/img/products/signature_ginseng_facial_soap_collection_item02_int_240118.png" alt="Gentle Cleansing Oil" />
+                </div>
+                <p class="txt-wrap">
+                  <span class="item-title">
+                    GENTLE<br />
+                    CLEANSING OIL
+                  </span>
+                  <span class="item-txt">Cleanse &amp; Deep Pore</span>
+                </p>
+              </li>
+              <li class="ap-product__item ap-product__item--03">
+                <div class="ap-image">
+                  <img src="https://www.sulwhasoo.com/int/en/resource/img/products/signature_ginseng_facial_soap_collection_item03_int_240118.png" alt="Signature Ginseng Facial Soap" />
+                </div>
+                <p class="txt-wrap">
+                  <span class="item-title">
+                    SIGNATURE GINSENG<br />
+                    FACIAL SOAP
+                  </span>
+                  <span class="item-txt">Cleanse & Gentle</span>
+                </p>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <!-- //collection -->
+      </div>
+    </article>
+  </div>
+</body>
+</html>

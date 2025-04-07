@@ -1,0 +1,113 @@
+@use 'public/assets/scss/common' as *;
+
+// ^ function
+// * PDP 간격 계산 함수
+// * @param {number} $value - 간격 값
+// * @return {string} 계산된 간격 값
+@function pdp-gap($value) {
+    $result: '';
+
+    @if (type-of($value) == 'number') {
+        @if ($value < 0) {
+            $result: clamp-cqi($value, $value, --ap-pdp-width);
+        } @else {
+            $result: clamp-cqi(0, $value, --ap-pdp-width);
+        }
+    } @else {
+        $result: clamp-cqi(0, $value, --ap-pdp-width);
+    }
+
+    @return $result;
+}
+
+// ^ mixin
+// * PDP 폰트 설정
+// * @param {number} $font - 폰트 크기
+// * @param {number} $line - 줄 높이 (선택)
+// * @param {number} $weight - 폰트 두께 (선택)
+@mixin pdp-fonts($font, $line: null, $weight: null) {
+    font-size: clamp-cqi(9, $font, --ap-pdp-width);
+
+    @if ($line != null) {
+        line-height: calc(check-var($line) / check-var($font));
+    }
+    @if ($weight != null) {
+        font-weight: calc(check-var($weight));
+    }
+}
+
+// ^ common setting
+.ap-pdp {
+    --ap-pdp-width: 860;
+    $pdp: 860;
+    container: pdp / inline-size;
+    max-width: $pdp * 1px;
+    min-width: 280px;
+    margin: 0 auto;
+
+    * {
+        padding: 0;
+        margin: 0;
+        font-style: normal;
+        word-break: keep-all;
+        list-style: none;
+
+        sup {
+            vertical-align: text-top;
+        }
+    }
+
+    .ap-section__title {
+        letter-spacing: calc(var(--ap-ls, -0.01em));
+        font-weight: var(--ap-fw, 500);
+        @include pdp-fonts(--ap-fs, --ap-lh);
+    }
+    .ap-text {
+        letter-spacing: calc(var(--ap-ls, -0.01em));
+        @include pdp-fonts(--ap-fs, --ap-lh, --ap-fw);
+
+        sup {
+            font-weight: 400;
+            font-size: 60%;
+        }
+    }
+
+    .ap-image {
+        img {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        &__caption {
+            text-align: center;
+
+            &--tl {
+                text-align: left;
+            }
+            &--tr {
+                text-align: right;
+            }
+        }
+
+        &--bg {
+            position: relative;
+
+            .ap-image__caption {
+                @each $dir in top, bottom, left, right {
+                    margin-#{$dir}: pdp-gap(--ap-#{$dir}) !important;
+                }
+                @include pos-abs($r: 0);
+            }
+        }
+    }
+    // ^ margin
+    .ap-ma {
+        @each $dir in top, bottom, left, right {
+            margin-#{$dir}: pdp-gap(--ap-#{$dir}) !important;
+        }
+    }
+    // ^ text align
+    .ap-ta {
+        text-align: var(--ap-ta) !important;
+    }
+}

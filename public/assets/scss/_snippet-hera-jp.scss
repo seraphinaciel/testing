@@ -1,0 +1,57 @@
+@import 'public/assets/scss/mixin';
+
+.wpc-brand-style {
+    .ap {
+        font-family: 'Cera Pro', 'Noto Sans JP';
+        color: #000;
+        line-height: 1;
+        letter-spacing: normal;
+        font-weight: normal;
+        * {
+            box-sizing: border-box;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            letter-spacing: inherit;
+        }
+        img,
+        video,
+        iframe {
+            width: auto;
+        }
+        video {
+            -webkit-mask-image: -webkit-radial-gradient(#fff, #000);
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+        }
+        ul,
+        ol {
+            list-style: none;
+        }
+        p {
+            margin: 0;
+        }
+
+        &-pdp {
+            --container-article-width-l: 860;
+            --container-article-width-min: 280;
+            --cont-w: 860;
+            container-name: article;
+            container-type: inline-size;
+            max-width: calc(var(--container-article-width-l) * 1px);
+            min-width: calc(var(--container-article-width-min) * 1px);
+            margin: 0 auto;
+            @extend .ap;
+        }
+        &-sub {
+        }
+    }
+}
